@@ -3,10 +3,7 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
 # flash, g, redirect, request, url_for
-
-
 
 db = SQLAlchemy()
 
@@ -49,8 +46,6 @@ def create_app(test_config=None):
         return render_template('index.html')
 
     return app
-
-
 
 app = create_app()
 

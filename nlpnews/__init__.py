@@ -36,8 +36,8 @@ def create_app(test_config=None):
 #    from . import models
 #    app.cli.add_command(models.init_db_command)
 
-#    from . import feedparser
-#    app.cli.add_command(feedparser.refresh_feeds_command)
+    from . import newsloader
+    app.cli.add_command(newsloader.refresh_news_command)
 #    app.cli.add_command(feedparser.populate_from_files_command)
 
     @app.route("/")

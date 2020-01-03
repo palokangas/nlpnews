@@ -4,6 +4,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # flash, g, redirect, request, url_for
+from nlpnews import analysis
 
 db = SQLAlchemy()
 
@@ -43,8 +44,9 @@ def create_app(test_config=None):
 
     @app.route("/")
     def hello():
-        helloversion = "Hello, I am still running: " + sys.version
-        return render_template('index.html')
+        bar = analysis.plot_freqs()
+        data = analysis.get_most_common_terms()        
+        return render_template('index.html', plot=bar, tabledata=data)
 
     return app
 

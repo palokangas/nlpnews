@@ -38,7 +38,8 @@ def create_app(test_config=None):
 
     from . import newsloader
     app.cli.add_command(newsloader.refresh_news_command)
-#    app.cli.add_command(feedparser.populate_from_files_command)
+    app.cli.add_command(newsloader.get_totals_command)
+    app.cli.add_command(newsloader.get_content_command)
 
     @app.route("/")
     def hello():

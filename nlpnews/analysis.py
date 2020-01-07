@@ -12,7 +12,7 @@ import numpy as np
 import nltk
 from nltk import word_tokenize, FreqDist, bigrams, trigrams
 from nltk.corpus import stopwords
-from . import article
+from . import article, newsloader
 
 # Load english stopwords
 stopwords = nltk.corpus.stopwords.words('english')
@@ -96,10 +96,142 @@ def plot_freqs():
             y=df['freq'],
             x=df['word'],
             orientation='v',
-            #width=[2 for x in range(20)],
-
         )
     ]
 
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def plot_sentimentbar():
+
+    df = pd.read_csv('./dataframes/sents_sources.csv')
+    data = [
+        go.Bar(
+            x=df['source'],
+            y=df['score']
+        )
+    ]
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+## This is here just for reference on how to manipulate colors :-)
+def plot_sentimentscatter():
+
+    df = pd.read_csv('./dataframes/sents_citations.csv')
+
+    # Create colors for markers
+    colorsIdx = {'bbc-news': 'rgb(215,40,39)',
+                 'abc-news-au': 'rgb(215,80,39)',
+                 'the-new-york-times': 'rgb(215,120,39)',
+                 'fox-news': 'rgb(215,160,39)',
+                 'al-jazeera-english': 'rgb(215,200,39)',
+                }
+    cols      = df['source'].map(colorsIdx)
+
+    data = [
+        go.Scatter(
+            x=df.index,
+            y=df['score'],
+            mode='markers',
+            marker=dict(color=cols),            
+        )
+    ]
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+
+def plot_sentimentscatter2():
+
+    df = pd.read_csv('./dataframes/sents_citations.csv')
+
+    data = []
+
+    for src in newsloader.SOURCES:
+        dfs = df[df['source'] == src]
+        src_data = [
+            go.Scatter(
+                x=dfs.index,
+                y=dfs['score'],
+                mode='markers',
+                marker=dict(size=16),
+                hovertext=dfs['citation'],
+                name=src,   
+            )
+        ]
+        data += src_data
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+def plot_opinionscatter():
+
+    df = pd.read_csv('./dataframes/sents_opinion.csv')
+
+    data = []
+    for src in newsloader.SOURCES:
+        dfs = df[df['source'] == src]
+        if len(dfs) == 0: continue
+        src_data = [
+            go.Scatter(
+                x=dfs.index,
+                y=dfs['score'],
+                mode='markers',
+                marker=dict(size=16),
+                hovertext=dfs['title'],
+                name=src,
+            )
+        ]
+        data += src_data
+    
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+
+def plot_articlescatter():
+
+    df = pd.read_csv('./dataframes/sents_articles.csv')
+
+    data = []
+    for src in newsloader.SOURCES:
+        dfs = df[df['source'] == src]
+        if len(dfs) == 0: continue 
+        src_data = [
+            go.Scatter(
+                x=dfs.index,
+                y=dfs['score'],
+                mode='markers',
+                marker=dict(size=16),
+                hovertext=dfs['title'],
+                name=src
+            )
+        ]
+        data += src_data
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
+
+def plot_popinionscatter():
+
+    df = pd.read_csv('./dataframes/sents_opinion_paragraphs.csv')
+
+    data = []
+    for src in newsloader.SOURCES:
+        dfs = df[df['source'] == src]
+        if len(dfs) == 0: continue
+        src_data = [
+            go.Scatter(
+                x=dfs.index,
+                y=dfs['score'],
+                mode='markers',
+                marker=dict(size=16),
+                hovertext=dfs['paragraph'],
+                name=src,
+            )
+        ]
+        data += src_data
+    
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON

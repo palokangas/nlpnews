@@ -2,6 +2,26 @@ import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nlpnews import article, newsloader
 
+
+def article_citation_sents():
+    """
+    Calculate sentiment scores for individual articles.
+    Write results to csv file
+    Return: a list of tuples: sentiment score, article source
+    """
+
+    articles = article.load_articles()
+
+    sentlist = []
+    for art in articles:
+        sentlist.append((round(art.citations_sentiment(), 2), art.source, art.title))
+
+    df = pd.DataFrame(sentlist, columns=['score', 'source', 'title'])
+    df.to_csv('./dataframes/sents_articles.csv')
+
+    return sentlist
+
+
 def all_citation_sents():
     """
     Get all sentiment scores for citations in all corpus as list.
@@ -13,11 +33,11 @@ def all_citation_sents():
     
     sentlist = []
     for art in articles:
-        for sent in art.citations_sentiment_list():
-            sentlist.append((round(sent*100, 2), art.source))
+        for sent, citation in art.citations_sentiment_list():
+            sentlist.append((round(sent*100, 2), art.source, citation))
 
-    df = pd.DataFrame(sentlist, columns=["score", "source"])
-    df.to_csv('./dataframes/citation_sents.csv')
+    df = pd.DataFrame(sentlist, columns=["score", "source", "citation"])
+    df.to_csv('./dataframes/sents_citations.csv')
 
     return sentlist
 
@@ -32,10 +52,29 @@ def opinion_sents():
 
     sentlist = []
     for op in article.opinions():
-        sentlist.append([round(sid.polarity_scores(op.fulltext)['compound'] *100, 2), op.source])
+        sentlist.append([round(sid.polarity_scores(op.fulltext)['compound'] *100, 2), op.source, op.title])
 
-    df = pd.DataFrame(sentlist, columns=['score', 'souce'])
-    df.to_csv('./dataframes/opinion_sents.csv')
+    df = pd.DataFrame(sentlist, columns=['score', 'source', 'title'])
+    df.to_csv('./dataframes/sents_opinion.csv')
+
+    return sentlist
+
+
+def opinion_paragraph_sents():
+    """
+    Calculate sentiment scores for opinion articles per paragraph.
+    Store results in csv file.
+    Return: a list of tuples: sentiment score, opinion source
+    """
+    sid = SentimentIntensityAnalyzer()
+
+    sentlist = []
+    for op in article.opinions():
+        for paragraph in op.fulltext.splitlines():
+            sentlist.append([round(sid.polarity_scores(paragraph)['compound'] *100, 2), op.source, paragraph])
+
+    df = pd.DataFrame(sentlist, columns=['score', 'source', 'paragraph'])
+    df.to_csv('./dataframes/sents_opinion_paragraphs.csv')
 
     return sentlist
 
@@ -49,7 +88,7 @@ def sentiment_for_source(source):
 
     sentlist = []
     for art in articles:
-        sentlist += art.citations_sentiment_list()
+        sentlist += [value for value, _ in art.citations_sentiment_list()]
     
     return sum(sentlist) / len(sentlist)
 
@@ -66,5 +105,5 @@ def sentiment_for_all_sources():
         sourcesents.append([round(score*100, 2), src])
     
     df = pd.DataFrame(sourcesents, columns=["score", "source"])
-    df.to_csv('./dataframes/source_sentiment.csv')
+    df.to_csv('./dataframes/sents_sources.csv')
 

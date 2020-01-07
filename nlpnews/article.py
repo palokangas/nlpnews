@@ -31,7 +31,7 @@ class Article:
         cits = self.get_citations()
         sentlist = []
         for cit in cits:
-            sentlist.append(sid.polarity_scores(cit)['compound'])
+            sentlist.append([sid.polarity_scores(cit)['compound'], cit])
         return sentlist
 
 

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br /><br />
+    <div class="container">
+
+      <h1>Sentiment Scores for articles</h1>
+      <p class="lead">All scores obtained using Vader sentinment analyzer</p>
+    
+      <h2 class="mt-4">Sentiment per news source</h2>
+      <p class="lead">As expected, the sentiment scores for citations in news texts
+                  are not very biased towards positive or negative. Sentiment score
+                  averages are pretty close to zero. There are some modest differences,
+                  American news sources being very close to zero point and rest of the sources,
+                  being a bit on the positive side.
+      </p>
+        
+    <div class="chart" id="barchart">
+      <script>
+          var graphs = {{ src_plot | safe }};
+          var layout = {{ src_plot_layout | safe }};
+          Plotly.plot('barchart',graphs, layout);
+      </script>
+    </div>
+
+    <h2 class="mt-4">Sentiment scores for citations, per article</h2>
+    <p class="lead"></p>
+
+    <div class="chart" id="articleplot">
+      <script>
+        var articlegraph = {{ src_articles | safe }};
+        var layout = {{ src_articles_layout | safe }};
+        Plotly.plot('articleplot', articlegraph, layout);
+      </script>  
+    </div>
+
+
+    <h2 class="mt-4">Sentiment scores for ALL citations in all texts</h2>
+    <p class="lead">Plotting all citation sentiments indicate that<br /> 1) Most citations are 
+                    neutral (0 or very close),<br /> 2) Distribution is fairly even between negative and positive 
+                    and<br /> 3) The New York Times seems to have citations with milder opinions than others (caveat:
+                    very few articles)</p>
+
+    <div class="chart" id="scatterplot">
+      <script>
+        var scattergraph = {{ src_scatter | safe }};
+        var layout = {{ src_scatter_layout | safe }};
+        Plotly.plot('scatterplot', scattergraph, layout);
+      </script>  
+    </div>
+
+    <h2 class="mt-4">Sentiment scores for opinion articles</h2>
+    <p class="lead">For opinion articles, the sentiment scores are more pronounced, maybe even
+                    surprisingly pronounces. Note that here the sentiment analysis is applied to the 
+                    full text of the opinion article.</p>
+
+    <div class="chart" id="opinionplot">
+      <script>
+        var opiniongraph = {{ src_opinions | safe }};
+        var layout = {{ src_opinions_layout | safe }};
+        Plotly.plot('opinionplot', opiniongraph, layout);
+      </script>  
+    </div>
+
+    <h2 class="mt-4">Sentiment scores for opinion articles (per paragraph)</h2>
+    <p class="lead">When analyzed by paragraph, the sentiment scores vary more, of course.</p>
+
+    <div class="chart" id="popinionplot">
+      <script>
+        var popiniongraph = {{ src_popinions | safe }};
+        var layout = {{ src_popinions_layout | safe }};
+        Plotly.plot('popinionplot', popiniongraph, layout);
+      </script>  
+    </div>
+
+    
+    </div>
+
+{% endblock %}

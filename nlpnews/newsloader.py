@@ -18,6 +18,13 @@ from newsapi import NewsApiClient
 from newspaper import Article as artsu
 from flask.cli import with_appcontext
 
+SOURCES = ['bbc-news',
+           'the-new-york-times',
+           'fox-news',
+           'abc-news-au',
+           'al-jazeera-english'
+           ]
+
 # Create News Api Client
 with open('newsapikey.txt', 'r') as filein:
     newsapikey = filein.read().strip()

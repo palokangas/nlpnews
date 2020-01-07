@@ -1,3 +1,6 @@
+import re
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 from . import newsloader as nl 
 
 class Article:
@@ -6,6 +9,30 @@ class Article:
     # Shortcut for creating instance attrs from mapping
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
+
+    def get_citations(self):
+        matcher = r"\"\S{1}.*?\""
+        if self.source in ['the-new-york-times', 'fox-news']:
+            matcher = r"\“\S{1}.*?\”"
+        
+        citations = re.findall(matcher, self.fulltext)
+        return citations
+
+    def citations_sentiment(self):
+        sid = SentimentIntensityAnalyzer()
+        cits = self.get_citations()
+        try:
+            return sum(sid.polarity_scores(cit)['compound'] for cit in cits) / len(cits)
+        except ZeroDivisionError:
+            return 0
+
+    def citations_sentiment_list(self):
+        sid = SentimentIntensityAnalyzer()
+        cits = self.get_citations()
+        sentlist = []
+        for cit in cits:
+            sentlist.append(sid.polarity_scores(cit)['compound'])
+        return sentlist
 
 
 def load_articles(sources=None):
@@ -27,6 +54,8 @@ def load_articles(sources=None):
     return articlelist
 
 def opinions(articles=None):
+    """ Get opinion articles """
+
     if not articles:
         articles = load_articles(nl.read_data())
     
@@ -35,7 +64,11 @@ def opinions(articles=None):
         yield op
 
 
+
+
 def for_source(source, articles=None):
+    """ Get articles for a gives news source """
+    
     if not articles:
         articles = load_articles(nl.read_data())
     

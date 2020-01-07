@@ -49,14 +49,15 @@ def create_app(test_config=None):
     app.cli.add_command(newsloader.get_totals_command)
     app.cli.add_command(newsloader.get_content_command)
 
-    @app.route(f"{URL_PREFIX}")
+    @app.route("/")
+    @app.route("/index")
     def hello():
         bar = analysis.plot_freqs()
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)
 
 
-    @app.route(f"{URL_PREFIX}sentiments/")
+    @app.route(f"/sentiments/")
     def sentiments():
         srcbar = analysis.plot_sentimentbar()
         srcbar_layout = {'yaxis': {'title': {'text': "Score"},

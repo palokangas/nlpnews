@@ -6,19 +6,27 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # flash, g, redirect, request, url_for
 from nlpnews import analysis
+import dotenv
+
 
 db = SQLAlchemy()
 
 def create_app(test_config=None):
+    
+
     app = Flask(__name__,
                 instance_relative_config=True,
                 static_folder="static")
+
     app.config.from_mapping(
         SECRET_KEY="dev",
         SQLALCHEMY_DATABASE_URI="sqlite:///" +
             os.path.join(app.instance_path, "development.db"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
+
+    app.config["APPLICATION_ROOT"] = dotenv.get('URL_PREFIX')
+
 
     migrate = Migrate(app, db)
 

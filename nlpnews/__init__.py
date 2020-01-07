@@ -51,7 +51,7 @@ def create_app(test_config=None):
 
     @app.route("/")
     @app.route("/index")
-    def hello():
+    def index():
         bar = analysis.plot_freqs()
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)

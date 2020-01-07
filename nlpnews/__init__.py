@@ -6,8 +6,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # flash, g, redirect, request, url_for
 from nlpnews import analysis
-import dotenv
 
+with open('.env', 'r') as filein:
+    URL_PREFIX = filein.read().splitlines()[0]
 
 db = SQLAlchemy()
 
@@ -24,9 +25,6 @@ def create_app(test_config=None):
             os.path.join(app.instance_path, "development.db"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
-
-    app.config["APPLICATION_ROOT"] = dotenv.get('URL_PREFIX')
-
 
     migrate = Migrate(app, db)
 
@@ -51,14 +49,14 @@ def create_app(test_config=None):
     app.cli.add_command(newsloader.get_totals_command)
     app.cli.add_command(newsloader.get_content_command)
 
-    @app.route("/")
+    @app.route(f"{URL_PREFIX}")
     def hello():
         bar = analysis.plot_freqs()
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)
 
 
-    @app.route("/sentiments/")
+    @app.route(f"{URL_PREFIX}sentiments/")
     def sentiments():
         srcbar = analysis.plot_sentimentbar()
         srcbar_layout = {'yaxis': {'title': {'text': "Score"},

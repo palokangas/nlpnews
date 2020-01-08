@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br /><br />
+    <div class="container">
+
+      <h1>Similarities in Articles and Opinions</h1>
+      <p class="lead"></p>
+    
+      <h2 class="mt-4">Jaccard index between News articles and Opinions</h2>
+      <p class="lead">There were only 7 opinion articles matching search keywords
+                      so the data is limited. Also, the word overlap is quite limited
+                      as can be seen from the table. Value 2.56 = 1 matching word and
+                      value 5.12 = 2 matching words.
+      </p>
+        
+    <!--div class="chart" id="jaccardscatter">
+      <script>
+          var graphs = {{ jaccard | safe }};
+          var layout = {};
+          Plotly.plot('jaccardscatter',graphs, layout);
+      </script>
+    </div-->
+
+    <div class="row mb-3 mt-4">
+        <div class="col-md-1 themed-grid-col"></div>
+        <div class="col-md-8 themed-grid-col">
+          <div class="table-responsive ">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Article nr</th>
+                    {% for cname in tabledata[0] %}
+                      <th>{{ cname }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in tabledata[1:] %}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{item[0]}}</td> 
+                    <td>{{item[1]}}</td> 
+                    <td>{{item[2]}}</td> 
+                    <td>{{item[3]}}</td> 
+                    <td>{{item[4]}}</td> 
+                    <td>{{item[5]}}</td> 
+                    <td>{{item[6]}}</td> 
+
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+          <h2 class="mt-4">Shared words in News articles and Opinions</h2>
+          <p class="lead">To make sense of what issues were shared between News articles
+                          and opinions, here is a list of overlapping words and their count.
+                          It is a bit interesting that opinion articles do not talk about Trump 
+                          as obsessively as do news articles in general.
+          </p>
+
+          <div class="row mb-3 mt-4">
+            <div class="col-md-1 themed-grid-col"></div>
+            <div class="col-md-8 themed-grid-col">
+              <div class="table-responsive ">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Token</th>
+                        <th>Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in wordcount %}
+                      <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{item[0]}}</td> 
+                        <td>{{item[1]}}</td> 
+                      </tr>
+    
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
+              </div> 
+              </div>   
+
+
+    <br /><br /><br />    
+
+
+    
+    </div>
+
+{% endblock %}

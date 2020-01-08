@@ -57,6 +57,56 @@ def create_app(test_config=None):
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)
 
+    @app.route("/lda/")
+    def lda():
+        news_topics = pd.read_csv('./dataframes/newstopics.csv')
+        news_topics_words = []
+        for i in news_topics.index: 
+            news_topics_words.append(" ".join(list(news_topics.iloc[i])[1:])) 
+
+        op_topics = pd.read_csv('./dataframes/opiniontopics.csv')
+        op_topics_words = []
+        for i in op_topics.index: 
+            op_topics_words.append(" ".join(list(op_topics.iloc[i])[1:])) 
+
+        lda_jaccard = pd.read_csv('./dataframes/lda.csv')
+        tabledata = []
+        
+        for i in lda_jaccard.index: 
+            row = []
+            for j in range(3): 
+                row.append(lda_jaccard.iloc[i][j]) 
+            tabledata.append(row)
+
+
+        data = pd.read_csv('./dataframes/lda_most_common.csv')
+        wordcount = list(zip(data['token'], data['count']))
+
+        return render_template("lda.html",  opwords=op_topics_words,
+                                            newswords=news_topics_words,
+                                            wordcount=wordcount,
+                                            tabledata=tabledata,
+                                           )
+
+    @app.route("/similarities/")
+    def similarities():
+        #src = analysis.plot_jaccard()
+        data = pd.read_csv('./dataframes/jaccard.csv')
+
+        tabledata = []
+        tabledata.append(list(data.columns[1:]))
+        
+        for i in data.index: 
+            row = []
+            for j in range(1, len(data.columns)): 
+                row.append(data.iloc[i][j]) 
+            tabledata.append(row)
+
+        data = pd.read_csv('./dataframes/jaccard_most_common.csv')
+        wordcount = list(zip(data['token'], data['count']))
+
+        return render_template("similarities.html", tabledata=tabledata, wordcount=wordcount)
+
 
     @app.route("/entities/")
     def entities():

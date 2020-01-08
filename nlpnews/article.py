@@ -1,7 +1,17 @@
 import re
+import string
+import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.corpus import stopwords
+from nltk import FreqDist
 
-from . import newsloader as nl 
+from . import newsloader as nl, analysis
+
+stopwords = nltk.corpus.stopwords.words('english')
+WORDS_FOR_REMOVAL = "'s said greta thunberg climate change n't would like ms".split()
+additionalpunct = "“’”—"
+punct = list(string.punctuation + additionalpunct)
+
 
 class Article:
     """ Article class for convenience in processing """
@@ -33,6 +43,15 @@ class Article:
         for cit in cits:
             sentlist.append([sid.polarity_scores(cit)['compound'], cit])
         return sentlist
+
+    def common_terms(self, nr_terms=20):
+        """ Return the nr_terms most frequent terms in article """
+        tokens = analysis.extra_tokenize(self.fulltext)
+        all_to_remove = stopwords + punct + WORDS_FOR_REMOVAL
+        coretokens = [t.lower() for t in tokens if t.lower() not in all_to_remove]
+        fd = FreqDist(coretokens)
+
+        return fd.most_common(nr_terms)
 
 
 def load_articles(sources=None):

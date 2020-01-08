@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br /><br />
+    <div class="container">
+
+      <h1>LDA analysis of News articles and Opinions</h1>
+      <p class="lead"></p>
+    
+      <h2 class="mt-4">Topic words in articles</h2>
+      <p class="lead">LDA was performed with 3 topics, getting 5 key words for each.
+      </p>
+
+      <h5>Topic words in news articles</h5>
+      <p>
+          {% for topic in newswords %}
+          <b>Topic {{ loop.index }}</b>: {{ topic }}<br />
+          {% endfor %}
+      </p>
+      <h5>Topic words in opinion articles</h5>
+      <p>
+          {% for topic in opwords %}
+          <b>Topic {{ loop.index }}</b>: {{ topic }}<br />
+          {% endfor %}
+      </p>
+      
+
+      <h2 class="mt-4">Jaccard score between news and opinion articles</h2>
+      <div class="row mb-3 mt-4">
+        <div class="col-md-8 themed-grid-col">
+          <div class="table-responsive ">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Article nr</th>
+                    <th>Opinion Topic 1</th>
+                    <th>Opinion Topic 2</th>
+                    <th>Opinion Topic 3</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in tabledata %}
+                  <tr>
+                    <td>News topic {{loop.index}}</td>
+                    <td>{{item[0]}}</td> 
+                    <td>{{item[1]}}</td> 
+                    <td>{{item[2]}}</td> 
+
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+
+          <h2 class="mt-4">Shared words in News articles and Opinions</h2>
+          <p class="lead">These were the overlapping words in news and opinion articles.
+          </p>
+
+          <div class="row mb-3 mt-4">
+            <div class="col-md-8 themed-grid-col">
+              <div class="table-responsive ">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Token</th>
+                        <th>Count</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in wordcount %}
+                      <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{item[0]}}</td> 
+                        <td>{{item[1]}}</td> 
+                      </tr>
+    
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div> 
+              </div> 
+              </div>   
+
+
+    <br /><br /><br />    
+
+
+    
+    </div -->
+
+{% endblock %}

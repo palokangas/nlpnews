@@ -4,6 +4,7 @@
 import string
 import re
 import json
+from collections import defaultdict
 
 import plotly 
 import plotly.graph_objs as go
@@ -88,6 +89,42 @@ def get_jaccard_for(text1, text2):
     return jaccard
 
 
+def comparison_table():
+    """
+    Create a table with Jaccard index of articles vs. opinion articles
+    Store in CSV and return as a table
+    """
+    opinions = list(article.opinions())
+    news = [a for a in article.load_articles() if a.uuid not in [op.uuid for op in opinions]]
+
+    shared_tokens = []
+    datatable = []
+    columns = [str(i)+'-'+op.source for i, op in enumerate(opinions)]
+    for art in news:
+        row = []
+        for op in opinions:
+            jac = round(get_jaccard_for(art.fulltext, op.fulltext) *100, 2)
+            row.append(jac)
+            # If there is even small similarity, collect similar tokens
+            if jac > 0:
+                shared_tokens += [artword[0] for artword in art.common_terms() if artword in op.common_terms()]
+
+        datatable.append(row)
+
+    df = pd.DataFrame(datatable, columns=columns)
+    df.to_csv('./dataframes/jaccard.csv')
+
+    worddict = defaultdict(int)
+    for w in shared_tokens:
+        worddict[w] += 1
+    worddict = {k:v for k,v in sorted(worddict.items(), key=lambda x: -x[1])}
+    
+    df2 = pd.DataFrame(list(zip(worddict.keys(), worddict.values())), columns = ["token", "count"])
+    df2.to_csv('./dataframes/jaccard_most_common.csv')
+
+    return worddict
+
+
 def plot_freqs():
 
     df = pd.read_csv('./dataframes/most_common.csv')
@@ -101,6 +138,23 @@ def plot_freqs():
 
     graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
+
+
+def plot_jaccard():
+
+    df = pd.read_csv('./dataframes/jaccard.csv')
+    data = [
+        go.Scatter(
+            x=df.columns[1:],
+            y=df.index,
+            mode='markers',
+            
+        )
+    ]
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+
 
 def plot_sentimentbar():
 

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br /><br />
+    <div class="container">
+
+      <h1>Entities</h1>
+      <p class="lead"></p>
+    
+      <h2 class="mt-4">Entities near negative expressions in opinion articles</h2>
+      <p class="lead">This is a very experimental entity recognition system. It does yield some
+                      good results when applied to sentences with direct sentence structure but 
+                      bad results when that is not the case.
+      </p>        
+      
+      <p>
+        <b>Method: </b><br/>
+        <ol>
+          <li>Split opinion articles into sentences and tag them</li>
+          <li>Iterate words in senteces, keeping track of proper nouns</li>
+          <li>Use Afinn-corpus to get negativity score for words</li>
+          <li>When getting a negative score, add previous proper noun to entities list</li>
+        </ol>
+      </p>
+        <p>
+
+        Often the entity is first introduced in one sentence and the negative proposition is made
+        in the following sentence, where the actor is referencs it pronoun. In these cases, the proper
+        noun is fetched from the previous sentence. 
+      </p>
+      <p>
+        Negative words are only counted when they are nouns, verbs or adjectives. In the case of verbs
+        or adjectives, the reasoning is pretty solid. But when they are nouns, previous proper noun 
+        only likely to match if there is a verb in between. These restrictions are taken into account. 
+      </p>              
+
+        
+    <div class="chart" id="barchart">
+      <script>
+          var graphs = {{ plot | safe }};
+          var layout = {{ plot_layout | safe }};
+          Plotly.plot('barchart',graphs, layout);
+      </script>
+    </div>
+
+    <div class="row mb-3 mt-4">
+        <div class="col-md-1 themed-grid-col"></div>
+        <div class="col-md-8 themed-grid-col">
+          <div class="table-responsive ">
+              <table class="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Token</th>
+                    <th>Frequency</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in tabledata %}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{item[0]}}</td> 
+                    <td>{{item[1]}}</td> 
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+    <br /><br /><br />    
+    </div>
+
+{% endblock %}

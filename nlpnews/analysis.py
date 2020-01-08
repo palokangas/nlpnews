@@ -142,6 +142,22 @@ def plot_sentimentscatter():
     return graphJSON
 
 
+def plot_entitybars():
+
+    df = pd.read_csv('./dataframes/entities.csv')
+    data = [
+        go.Bar(
+            y=list(reversed(df['token'])),
+            x=list(reversed(df['count'])),
+            orientation='h',
+        )
+    ]
+
+
+    graphJSON = json.dumps(data, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
+    
+
 def plot_sentimentscatter2():
 
     df = pd.read_csv('./dataframes/sents_citations.csv')

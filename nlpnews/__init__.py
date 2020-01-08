@@ -1,11 +1,12 @@
 import sys
 import os
 import json
+import pandas as pd
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 # flash, g, redirect, request, url_for
-from nlpnews import analysis
+from nlpnews import analysis, entity
 
 with open('.env', 'r') as filein:
     URL_PREFIX = filein.read().splitlines()[0]
@@ -55,6 +56,22 @@ def create_app(test_config=None):
         bar = analysis.plot_freqs()
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)
+
+
+    @app.route("/entities/")
+    def entities():
+        srcbar = analysis.plot_entitybars()
+        data = pd.read_csv('./dataframes/entities.csv')
+        tabledata = list(zip(data['token'], data['count']))
+
+        plot_layout = { 'title': 'Entities near negative expressions',
+                        'height': 1200,
+                        'font': {
+                            'size': 9,
+                            }
+                        }
+
+        return render_template("entities.html", plot=srcbar, tabledata=tabledata, plot_layout=plot_layout)
 
 
     @app.route(f"/sentiments/")

@@ -1,5 +1,7 @@
 import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk import pos_tag
+from afinn import Afinn
 from nlpnews import article, newsloader
 
 

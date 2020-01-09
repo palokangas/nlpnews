@@ -5,6 +5,7 @@ import pandas as pd
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_caching import Cache
 # flash, g, redirect, request, url_for
 from nlpnews import analysis, entity
 
@@ -26,6 +27,9 @@ def create_app(test_config=None):
             os.path.join(app.instance_path, "development.db"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False
     )
+    app.config['CACHE_TYPE'] = 'simple'
+    cache = Cache(app)
+    cache.init_app(app)
 
     migrate = Migrate(app, db)
 
@@ -52,12 +56,14 @@ def create_app(test_config=None):
 
     @app.route("/")
     @app.route("/index")
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def index():
         bar = analysis.plot_freqs()
         data = analysis.get_most_common_terms()        
         return render_template('index.html', plot=bar, tabledata=data)
 
     @app.route("/lda/")
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def lda():
         news_topics = pd.read_csv('./dataframes/newstopics.csv')
         news_topics_words = []
@@ -89,6 +95,7 @@ def create_app(test_config=None):
                                            )
 
     @app.route("/similarities/")
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def similarities():
         #src = analysis.plot_jaccard()
         data = pd.read_csv('./dataframes/jaccard.csv')
@@ -109,6 +116,7 @@ def create_app(test_config=None):
 
 
     @app.route("/entities/")
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def entities():
         srcbar = analysis.plot_entitybars()
         data = pd.read_csv('./dataframes/entities.csv')
@@ -125,6 +133,7 @@ def create_app(test_config=None):
 
 
     @app.route(f"/sentiments/")
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def sentiments():
         srcbar = analysis.plot_sentimentbar()
         srcbar_layout = {'yaxis': {'title': {'text': "Score"},

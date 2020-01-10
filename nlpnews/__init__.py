@@ -80,7 +80,7 @@ def create_app(test_config=None):
         
         for i in lda_jaccard.index: 
             row = []
-            for j in range(3): 
+            for j in range(1,4):
                 row.append(lda_jaccard.iloc[i][j]) 
             tabledata.append(row)
 

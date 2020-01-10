@@ -20,13 +20,15 @@
           <li>Iterate words in senteces, keeping track of proper nouns</li>
           <li>Use Afinn-corpus to get negativity score for words</li>
           <li>When getting a negative score, add previous proper noun to entities list</li>
+          <li>Reset values on sentence break. (note exception below)</li>
         </ol>
       </p>
         <p>
 
         Often the entity is first introduced in one sentence and the negative proposition is made
-        in the following sentence, where the actor is referencs it pronoun. In these cases, the proper
-        noun is fetched from the previous sentence. 
+        in the following sentence, where the actor is referencs it pronoun. Simplified example:
+        "This has also been brought forward by the <b>Democrats</b>. They are <i>stupid</i> in their opposition of...”
+        In these cases, the proper noun is fetched from the previous sentence. 
       </p>
       <p>
         Negative words are only counted when they are nouns, verbs or adjectives. In the case of verbs

@@ -6,16 +6,54 @@
     <br /><br />
     <div class="container">
 
-      <h1>Main features of climate news data</h1>
-      <p class="lead">The data used is obtained from these news sources:</p>
+      <h1>Data, tools and main features</h1>
+      <p class="lead">The data used is obtained from these news sources (news, opinions):</p>
+      <p>Search terms: <b>"climate change"</b> AND <b>"Thunberg"</b></p>
       <ul>
-        <li>BBC News UK</li>
-        <li>Fox News</li>
-        <li>The New York Times</li>
-        <li>Al-Jazeera English</li>
-        <li>ABC News Australia</li>
+        <li>BBC News UK (27, 0)</li>
+        <li>Fox News (28, 3) </li>
+        <li>The New York Times (5, 2)</li>
+        <li>Al-Jazeera English (10, 2) </li>
+        <li>ABC News Australia (16, 0) </li>
+        <li><b>Total: </b>86 news articles, 7 opinions</li>
       </ul>
-    
+
+      
+      <h2 class="mt-4">Tools used</h2>
+      <p class="lead">
+        <ul>
+          <li><b>Python 3.7</b>: for gluing everything together + standard library tools</li>
+          <li><b>Jupyter Notebook</b><Jupyter>: prototyping, testing tools and results</li>
+          <li><b>Pandas</b>: Data handling & storage operations (CSV, no database)</li>
+          <li><b>NewsAPI</b>: Searching for news & retrieval of metadata</li>
+          <li><b>Newspaper3k</b>: Fetching news content & initial preprocessing</li>
+          <li><b>NLTK</b>: General NLP module (SpaCy also tested, but didn't switch to that)</li>
+          <li><b>Vader</b>: Sentiment analysis</li>
+          <li><b>Afinn-corpus</b>: Degative word recognition</li>
+          <li><b>Penn-Treebank-corpus</b>: POS tagging</li>
+          <li><b>Scikit-learn</b>: To provide Latent Dirichlet Allocation (LDA) for topic modeling</li>
+          <li><b>Flask</b>: Web framework</li>
+          <li><b>Plotly</b>: Creating graphs</li>
+          <li><b>Github</b>: Version control and bridge to deployment</li>
+        </ul>  
+      </p>
+
+
+      <h2 class="mt-4">Preprocessing</h2>
+      <p class="lead">
+        <ul>
+          <li><b>Newspaper3k</b>: from HTML to text and initial preprocessing</li>
+          <li><b>Manually created lists</b>: removing code, links, picture galleries, copyright & social media links</li>
+          <li><b>Stopword removal</b>: NLTK stopword + manually created list</li>
+          <li><b>Punctuation removal</b>: Python standard library String.punctuation + manually created list</li>
+        </ul>
+      </p>
+
+      <h2 class="mt-4">H</h2>
+      <p class="lead">Text</p>
+
+
+
       <h2 class="mt-4">Most frequent words in corpus</h2>
       <p class="lead">All text concatenated, with stopword removal. Displaying 20 most frequent terms.</p>
         

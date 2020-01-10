@@ -9,86 +9,79 @@
 7,-0.06,fox-news,"'Grand Tour' host Jeremy Clarkson calls Greta Thunberg an 'idiot,' blames her for his show's struggles"
 8,0.0,fox-news,"Arnold Schwarzenegger, actor-turned-climate activist, reportedly drives 'tank' to run errands"
 9,0.12,fox-news,Climate scientists try to cut their own carbon footprints
-10,0.0,fox-news,"Rep. Cathy McMorris Rodgers, Benji Backer: How to depolarize the climate change debate"
-11,0.0,fox-news,"Climate protesters block stores, disrupt Black Friday shopping"
-12,0.0,fox-news,"Trump joins Nancy Pelosi, Greta Thunberg, whistleblower as Time 'Person of the Year' finalists"
-13,0.09,fox-news,Tomi Lahren slams Hillary Clinton for decrying backlash against women: 'Talk about the pot calling the kettle black'
-14,-0.08,fox-news,Leslie Marshall: Top impeachment takeaways (from a Democrat's perspective)
-15,0.0,fox-news,"Meghan McCain: TIME's 'Person of the Year' should have been the whistleblower, not Greta Thunberg"
-16,-0.37,fox-news,Patton Oswalt slams Trump and his supporters as 'a--holes'
-17,0.09,fox-news,German railway company corrects Thunberg's tweet on 'overcrowded trains'
-18,0.04,fox-news,"Greta Thunberg apologizes for 'against the wall' remark, plans a break from climate activism"
-19,0.13,fox-news,"On 'SNL,' Greta Thunberg calls out Trump, warns of Christmas climate calamity: 'The elves will drown'"
-20,0.0,fox-news,"Climate activists seen in video trying to block freight train hauling coal, tweet claims"
-21,0.16,fox-news,Sanders calls Omar ‘extraordinary’ as he teams up with ‘Squad’ member in New Hampshire
-22,-0.14,fox-news,White House defends Melania Trump's public silence on president's tweet mocking Greta Thunberg
-23,-0.09,fox-news,Soledad O’Brien defends Meghan McCain over 'wildly misleading' Daily Beast headline
-24,0.0,fox-news,"Trump, Obama tied as ‘most admired man’ for first time: poll"
-25,-0.02,fox-news,Mike Huckabee on Chuck Schumer's demand for impeachment witnesses: 'I'm embarrassed for him'
-26,0.0,fox-news,Mainstream media piling on Trump for invoking son at rally to attack Warren
-27,-0.07,fox-news,Script about Barron Trump sabotaging his dad's 2016 campaign gets attention in Hollywood
-28,0.0,fox-news,House Judiciary Committee calls for Trump's removal in 658-page impeachment report;
-29,-0.12,fox-news,"Trump works the refs, hits the media, casts doubt on debates"
-30,-0.06,fox-news,Dan Gainor: 2019 was American journalism’s worst year ever – Here are 7 reasons why
-31,0.28,bbc-news,"Who is Greta Thunberg, the #FridaysForFuture activist?"
-32,0.04,bbc-news,Climate change: Anger as protestors barred from UN talks
-33,0.08,bbc-news,Climate change: Critical year for climate change starts in Madrid
-34,0.26,bbc-news,Greta Thunberg's Atlantic crossing: 'Why I wanted to help'
-35,0.11,bbc-news,Climate change: The COP25 talks trying to change the world
-36,-0.32,bbc-news,Greta Thunberg: Young are 'angry' over climate change
-37,0.77,bbc-news,Greta Thunberg to sail to Spain climate summit with YouTubers
-38,0.08,bbc-news,Greta Thunberg accuses world leaders of 'creative PR' at climate summit
-39,0.18,bbc-news,Climate change: UN negotiators 'playing politics' amid global crisis
-40,0.41,bbc-news,Greta Thunberg's 'urgent' book earns Waterstones author award
-41,-0.08,bbc-news,Dubai Air Show: Emirates boss says he took too long to accept climate crisis
-42,-0.11,bbc-news,COP25: Thousands gather for change climate protests in Madrid
-43,0.04,bbc-news,Throne Speech: Six things on Trudeau's to-do list
-44,0.22,bbc-news,The Grand Tour: Jeremy Clarkson show confronts climate change
-45,-0.03,bbc-news,EU leaders to consider climate neutrality pledge
-46,0.1,bbc-news,Dubai Air Show: The challenges for us all in flying green
-47,-0.62,bbc-news,Greta Thunberg to guest edit Radio 4's Today programme
-48,0.48,bbc-news,Madrid climate talks will set the tone for Glasgow 2020
-49,0.74,bbc-news,COP26: Glasgow Science Centre events to tie up with UN climate change summit
-50,0.0,bbc-news,The best science long reads of 2019
-51,0.2,bbc-news,Greta Thunberg changes Twitter bio after Trump dig
-52,0.11,bbc-news,The big science and environment stories of 2019
-53,0.09,bbc-news,"Greta Thunberg's father: 'She is happy, but I worry'"
-54,-0.02,bbc-news,Rowan Williams: Climate change 'largest challenge ever'
-55,0.06,bbc-news,Greta Thunberg apologises for 'put leaders against the wall' comment
-56,0.17,bbc-news,20 things to look out for in 2020
-57,0.0,bbc-news,Boxing Day family puzzler 2019
-58,0.17,the-new-york-times,"Goodbye, America: Greta Thunberg to Sail Again After Climate Talks Relocate"
-59,0.09,the-new-york-times,Climate Change Poses Threats to Children’s Health Worldwide
-60,0.0,the-new-york-times,Darren Aronofsky: Greta Thunberg Is the Icon the Planet Desperately Needs
-61,0.12,the-new-york-times,Greta Thunberg Is Time Person of the Year for 2019
-62,-0.04,the-new-york-times,Greta Thunberg Is Taking a Holiday Break. ‘You Need to Take Rest.’
-63,0.0,the-new-york-times,No More Phones and Other Tech Predictions for the Next Decade
-64,-0.09,the-new-york-times,"Trump Mocks Greta Thunberg, and She Jabs Back"
-65,0.19,abc-news-au,Activist Greta Thunberg catches lift to UN climate summit with Australian sailing family
-66,0.16,abc-news-au,"Away from the global climate warrior image, an Aussie family got to know the real Greta Thunberg"
-67,0.02,abc-news-au,Greta Thunberg an 'energised … angry kid' ready for climate summit after a three-week voyage
-68,0.22,abc-news-au,Library confirms Greta Thunberg 'time traveller' photo is authentic
-69,-0.1,abc-news-au,Greta Thunberg is still sailing across the Atlantic on her way to the COP 25 climate meeting in Spain. She's a day late
-70,0.03,abc-news-au,I'm a critical thinking expert. This is how you win any climate change debate
-71,0.16,abc-news-au,Greta Thunberg is Time's 2019 Person of the Year
-72,0.09,abc-news-au,Who are the Quiet Australians?
-73,-0.03,abc-news-au,Scott Morrison acknowledges smoke haze concerns as he stands by climate policies
-74,-0.04,abc-news-au,Teenage bushfire survivor Shiann Broderick pleads with Prime Minister as climate protests kick off
-75,0.1,abc-news-au,Greta Thunberg and David Attenborough unite to call for climate change action
-76,0.03,abc-news-au,Greta Thunberg turns tables on Trump after 'anger management' comments
-77,0.06,abc-news-au,Finger pointed at Australia as climate talks bring 'lost opportunity'
-78,0.01,abc-news-au,German train company calls out teen climate activist Greta Thunberg over social media post
-79,-0.07,abc-news-au,Meet Thailand's answer to Greta Thunberg. Her passion and persistence is already paying off
-80,0.2,abc-news-au,Royals attend traditional Christmas service at the end of a 'bumpy' year
-81,-0.01,al-jazeera-english,Thunberg arrives at COP25 to lead mass protest
-82,0.17,al-jazeera-english,Greta Thunberg named 2019 Time Magazine Person of the Year
-83,-0.08,al-jazeera-english,Thousands stage global climate protests ahead of UN summit
-84,0.17,al-jazeera-english,"Coldplay won't tour new album, say want gigs to be 'sustainable'"
-85,-0.04,al-jazeera-english,COP25: UN chief issues stark warning as climate summit begins
-86,0.02,al-jazeera-english,COP25: UN climate conference to tackle global challenges
-87,-0.0,al-jazeera-english,Are Global South experts sidelined in climate conversations?
-88,0.0,al-jazeera-english,What makes this COP special?
-89,0.0,al-jazeera-english,Thousands avoid flying to reduce carbon footprint
-90,0.02,al-jazeera-english,Trump blasted for calling Thunberg's Time honour 'ridciulous'
-91,0.06,al-jazeera-english,COP25 summit fails to address key carbon markets issue
-92,0.0,al-jazeera-english,Britain's election and the deepening generational divide
+10,0.0,fox-news,"Climate protesters block stores, disrupt Black Friday shopping"
+11,0.0,fox-news,"Trump joins Nancy Pelosi, Greta Thunberg, whistleblower as Time 'Person of the Year' finalists"
+12,0.09,fox-news,Tomi Lahren slams Hillary Clinton for decrying backlash against women: 'Talk about the pot calling the kettle black'
+13,0.0,fox-news,"Meghan McCain: TIME's 'Person of the Year' should have been the whistleblower, not Greta Thunberg"
+14,-0.37,fox-news,Patton Oswalt slams Trump and his supporters as 'a--holes'
+15,0.09,fox-news,German railway company corrects Thunberg's tweet on 'overcrowded trains'
+16,0.04,fox-news,"Greta Thunberg apologizes for 'against the wall' remark, plans a break from climate activism"
+17,0.13,fox-news,"On 'SNL,' Greta Thunberg calls out Trump, warns of Christmas climate calamity: 'The elves will drown'"
+18,0.0,fox-news,"Climate activists seen in video trying to block freight train hauling coal, tweet claims"
+19,0.16,fox-news,Sanders calls Omar ‘extraordinary’ as he teams up with ‘Squad’ member in New Hampshire
+20,-0.14,fox-news,White House defends Melania Trump's public silence on president's tweet mocking Greta Thunberg
+21,-0.09,fox-news,Soledad O’Brien defends Meghan McCain over 'wildly misleading' Daily Beast headline
+22,0.0,fox-news,"Trump, Obama tied as ‘most admired man’ for first time: poll"
+23,-0.02,fox-news,Mike Huckabee on Chuck Schumer's demand for impeachment witnesses: 'I'm embarrassed for him'
+24,0.0,fox-news,Mainstream media piling on Trump for invoking son at rally to attack Warren
+25,-0.07,fox-news,Script about Barron Trump sabotaging his dad's 2016 campaign gets attention in Hollywood
+26,0.0,fox-news,House Judiciary Committee calls for Trump's removal in 658-page impeachment report;
+27,-0.12,fox-news,"Trump works the refs, hits the media, casts doubt on debates"
+28,0.28,bbc-news,"Who is Greta Thunberg, the #FridaysForFuture activist?"
+29,0.04,bbc-news,Climate change: Anger as protestors barred from UN talks
+30,0.08,bbc-news,Climate change: Critical year for climate change starts in Madrid
+31,0.26,bbc-news,Greta Thunberg's Atlantic crossing: 'Why I wanted to help'
+32,0.11,bbc-news,Climate change: The COP25 talks trying to change the world
+33,-0.32,bbc-news,Greta Thunberg: Young are 'angry' over climate change
+34,0.77,bbc-news,Greta Thunberg to sail to Spain climate summit with YouTubers
+35,0.08,bbc-news,Greta Thunberg accuses world leaders of 'creative PR' at climate summit
+36,0.18,bbc-news,Climate change: UN negotiators 'playing politics' amid global crisis
+37,0.41,bbc-news,Greta Thunberg's 'urgent' book earns Waterstones author award
+38,-0.08,bbc-news,Dubai Air Show: Emirates boss says he took too long to accept climate crisis
+39,-0.11,bbc-news,COP25: Thousands gather for change climate protests in Madrid
+40,0.04,bbc-news,Throne Speech: Six things on Trudeau's to-do list
+41,0.22,bbc-news,The Grand Tour: Jeremy Clarkson show confronts climate change
+42,-0.03,bbc-news,EU leaders to consider climate neutrality pledge
+43,0.1,bbc-news,Dubai Air Show: The challenges for us all in flying green
+44,-0.62,bbc-news,Greta Thunberg to guest edit Radio 4's Today programme
+45,0.48,bbc-news,Madrid climate talks will set the tone for Glasgow 2020
+46,0.74,bbc-news,COP26: Glasgow Science Centre events to tie up with UN climate change summit
+47,0.0,bbc-news,The best science long reads of 2019
+48,0.2,bbc-news,Greta Thunberg changes Twitter bio after Trump dig
+49,0.11,bbc-news,The big science and environment stories of 2019
+50,0.09,bbc-news,"Greta Thunberg's father: 'She is happy, but I worry'"
+51,-0.02,bbc-news,Rowan Williams: Climate change 'largest challenge ever'
+52,0.06,bbc-news,Greta Thunberg apologises for 'put leaders against the wall' comment
+53,0.17,bbc-news,20 things to look out for in 2020
+54,0.0,bbc-news,Boxing Day family puzzler 2019
+55,0.17,the-new-york-times,"Goodbye, America: Greta Thunberg to Sail Again After Climate Talks Relocate"
+56,0.09,the-new-york-times,Climate Change Poses Threats to Children’s Health Worldwide
+57,0.12,the-new-york-times,Greta Thunberg Is Time Person of the Year for 2019
+58,-0.04,the-new-york-times,Greta Thunberg Is Taking a Holiday Break. ‘You Need to Take Rest.’
+59,-0.09,the-new-york-times,"Trump Mocks Greta Thunberg, and She Jabs Back"
+60,0.19,abc-news-au,Activist Greta Thunberg catches lift to UN climate summit with Australian sailing family
+61,0.16,abc-news-au,"Away from the global climate warrior image, an Aussie family got to know the real Greta Thunberg"
+62,0.02,abc-news-au,Greta Thunberg an 'energised … angry kid' ready for climate summit after a three-week voyage
+63,0.22,abc-news-au,Library confirms Greta Thunberg 'time traveller' photo is authentic
+64,-0.1,abc-news-au,Greta Thunberg is still sailing across the Atlantic on her way to the COP 25 climate meeting in Spain. She's a day late
+65,0.03,abc-news-au,I'm a critical thinking expert. This is how you win any climate change debate
+66,0.16,abc-news-au,Greta Thunberg is Time's 2019 Person of the Year
+67,0.09,abc-news-au,Who are the Quiet Australians?
+68,-0.03,abc-news-au,Scott Morrison acknowledges smoke haze concerns as he stands by climate policies
+69,-0.04,abc-news-au,Teenage bushfire survivor Shiann Broderick pleads with Prime Minister as climate protests kick off
+70,0.1,abc-news-au,Greta Thunberg and David Attenborough unite to call for climate change action
+71,0.03,abc-news-au,Greta Thunberg turns tables on Trump after 'anger management' comments
+72,0.06,abc-news-au,Finger pointed at Australia as climate talks bring 'lost opportunity'
+73,0.01,abc-news-au,German train company calls out teen climate activist Greta Thunberg over social media post
+74,-0.07,abc-news-au,Meet Thailand's answer to Greta Thunberg. Her passion and persistence is already paying off
+75,0.2,abc-news-au,Royals attend traditional Christmas service at the end of a 'bumpy' year
+76,-0.01,al-jazeera-english,Thunberg arrives at COP25 to lead mass protest
+77,0.17,al-jazeera-english,Greta Thunberg named 2019 Time Magazine Person of the Year
+78,-0.08,al-jazeera-english,Thousands stage global climate protests ahead of UN summit
+79,0.17,al-jazeera-english,"Coldplay won't tour new album, say want gigs to be 'sustainable'"
+80,-0.04,al-jazeera-english,COP25: UN chief issues stark warning as climate summit begins
+81,0.02,al-jazeera-english,COP25: UN climate conference to tackle global challenges
+82,-0.0,al-jazeera-english,Are Global South experts sidelined in climate conversations?
+83,0.0,al-jazeera-english,Thousands avoid flying to reduce carbon footprint
+84,0.02,al-jazeera-english,Trump blasted for calling Thunberg's Time honour 'ridciulous'
+85,0.06,al-jazeera-english,COP25 summit fails to address key carbon markets issue

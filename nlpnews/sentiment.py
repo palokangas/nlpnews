@@ -12,7 +12,7 @@ def article_citation_sents():
     Return: a list of tuples: sentiment score, article source
     """
 
-    articles = article.load_articles()
+    articles = article.news_articles()
 
     sentlist = []
     for art in articles:
@@ -31,7 +31,7 @@ def all_citation_sents():
     Return: a list of tuples: sentiment score, article source
     """
 
-    articles = article.load_articles()
+    articles = article.news_articles()
     
     sentlist = []
     for art in articles:

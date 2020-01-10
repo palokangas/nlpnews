@@ -83,6 +83,13 @@ def opinions(articles=None):
         yield op
 
 
+def news_articles():
+    """ Get news articles """
+    
+    articles = load_articles(nl.read_data())
+
+    non_opinion_arts = [a for a in articles if a.url.find("/opinion") is -1]
+    return non_opinion_arts
 
 
 def for_source(source, articles=None):

@@ -67,25 +67,36 @@ def get_most_common_terms(articles=None):
 
 def get_jaccard_for(text1, text2):
     """ Calculate a jaccard score of two texts """
-    tokens1 = word_tokenize(text1)
-    tokens2 = word_tokenize(text2)
-    all_to_remove = WORDS_FOR_REMOVAL + stopwords + punct
-    tokens1 = [t.lower() for t in tokens1 if t.lower() not in all_to_remove]
-    tokens2 = [t.lower() for t in tokens2 if t.lower() not in all_to_remove]
-    fdist1 = FreqDist(tokens1)
-    fdist2 = FreqDist(tokens2)
+    
+    ##    
+    #        tokens = analysis.extra_tokenize(self.fulltext)
+    #    all_to_remove = stopwords + punct + WORDS_FOR_REMOVAL
+    #    coretokens = [t.lower() for t in tokens if t.lower() not in all_to_remove]
+    #    fd = FreqDist(coretokens)
+    
+    #tokens1 = word_tokenize(text1)
+    #tokens2 = word_tokenize(text2)
+    #all_to_remove = WORDS_FOR_REMOVAL + stopwords + punct
+    #tokens1 = [t.lower() for t in tokens1 if t.lower() not in all_to_remove]
+    #tokens2 = [t.lower() for t in tokens2 if t.lower() not in all_to_remove]
+    #fdist1 = FreqDist(tokens1)
+    #fdist2 = FreqDist(tokens2)
     #print(fdist1.most_common(20))
     #print(fdist2.most_common(20))
-    wordlist1 = list(fdist1.most_common(20))
-    wordlist2 = list(fdist2.most_common(20))
+    #wordlist1 = list(fdist1.most_common(20))
+    #wordlist2 = list(fdist2.most_common(20))
+    wordlist1 = [w[0] for w in text1.common_terms()]
+    wordlist2 = [w[0] for w in text2.common_terms()]
+    print(wordlist1)
+    
     all_popular_words = set(wordlist1 + wordlist2)
-    word_in_both = set(w[0] for w in wordlist1 if w in wordlist2)
+    word_in_both = set(w for w in wordlist1 if w in wordlist2)
     nr_all = len(all_popular_words)
     nr_both = len(word_in_both)
     jaccard = nr_both / nr_all
     common_words = ", ".join(word_in_both)
-    #print("Words in both texts: ", common_words)
-    #print(f"Jaccard = {nr_both} / {nr_all} = {jaccard:.3f}")
+    print("Words in both texts: ", common_words)
+    print(f"Jaccard = {nr_both} / {nr_all} = {jaccard:.3f}")
     return jaccard
 
 
@@ -95,7 +106,8 @@ def comparison_table():
     Store in CSV and return as a table
     """
     opinions = list(article.opinions())
-    news = [a for a in article.load_articles() if a.uuid not in [op.uuid for op in opinions]]
+    #news = [a for a in article.load_articles() if a.uuid not in [op.uuid for op in opinions]]
+    news = article.news_articles()
 
     shared_tokens = []
     datatable = []
@@ -103,11 +115,13 @@ def comparison_table():
     for art in news:
         row = []
         for op in opinions:
-            jac = round(get_jaccard_for(art.fulltext, op.fulltext) *100, 2)
+            jac = round(get_jaccard_for(art, op) *100, 2)
             row.append(jac)
             # If there is even small similarity, collect similar tokens
             if jac > 0:
-                shared_tokens += [artword[0] for artword in art.common_terms() if artword in op.common_terms()]
+                acom = [w[0] for w in art.common_terms()]
+                opcom = [w[0] for w in art.common_terms()]
+                shared_tokens += [artword for artword in acom if artword in opcom]
 
         datatable.append(row)
 

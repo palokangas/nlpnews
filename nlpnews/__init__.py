@@ -95,7 +95,7 @@ def create_app(test_config=None):
                                            )
 
     @app.route("/similarities/")
-    #@cache.cached(timeout=600)  # cache this view for 10 minutes
+    @cache.cached(timeout=600)  # cache this view for 10 minutes
     def similarities():
         #src = analysis.plot_jaccard()
         data = pd.read_csv('./dataframes/jaccard.csv')

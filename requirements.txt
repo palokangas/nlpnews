@@ -18,7 +18,7 @@ Mako==1.1.0
 MarkupSafe==1.1.1
 newsapi-python==0.2.6
 newspaper3k==0.2.8
-nltk==3.4.5
+nltk==3.6.6
 numpy==1.18.0
 pandas==0.25.3
 Pillow>=7.1.0
